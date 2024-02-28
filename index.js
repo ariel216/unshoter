@@ -31,8 +31,8 @@ const init = (url)=>{
 
 const listarData = async ()=>{
     let consulta = `select * from public.ubicaciones 
-                    where referencia  <> '' or referencia <> null
-                    and link  <> '' or link <> null
+                    where (referencia  <> '' or referencia <> null)
+                    and (link  = '' or link isnull )
                     order by id asc`;    
     let resultados = await conexionPG.query(consulta);
     for (let i = 0; i < resultados.rowCount; i++) {
